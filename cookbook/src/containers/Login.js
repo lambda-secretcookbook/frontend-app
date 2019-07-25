@@ -15,7 +15,7 @@ class Login extends Component {
     };
   }
 
-  handleInputChange = event => {
+  handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
@@ -30,13 +30,21 @@ class Login extends Component {
     return (
       <UserForm
         onSubmit={this.authenticateUser}
-        handleInputChange={this.handleInputChange}
+        usernameValue={this.state.username}
+        passwordValue={this.state.password}
+        message={this.props.message}
+        handleChange={this.handleChange}
+        submitText="Log in"
       />
     );
   }
 }
 
+const mapStateToProps = state => ({
+  message: state.user.message
+});
+
 export default connect(
-  undefined,
+  mapStateToProps,
   { authenticateUser }
 )(Login);
