@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import UserForm from "../components/UserForm";
+import { registerUser } from "../../actions";
+import UserForm from "../../components/forms/UserForm";
 
 class Register extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      username: "",
-      password: ""
-    };
-  }
+  state = {
+    username: "",
+    password: ""
+  };
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -19,7 +16,9 @@ class Register extends Component {
 
   registerUser = event => {
     event.preventDefault();
-    // TODO
+
+    const { username, password } = this.state;
+    this.props.registerUser({ username, password });
   };
 
   render() {
@@ -42,5 +41,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  {}
+  { registerUser }
 )(Register);

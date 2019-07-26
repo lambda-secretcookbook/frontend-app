@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { push } from "connected-react-router";
+
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
@@ -13,8 +15,10 @@ export const authenticateUser = ({ username, password }) => dispatch => {
       password
     })
     .then(response => {
-      dispatch({ type: "LOGIN_SUCCESS" });
       localStorage.setItem("token", response.data.token);
+
+      dispatch({ type: "LOGIN_SUCCESS", payload: response.data.username });
+      dispatch(push("/recipes"));
     })
     .catch(error =>
       dispatch({ type: "LOGIN_FAILURE", message: error.response.data.message })
@@ -29,10 +33,20 @@ export const registerUser = ({ username, password }) => dispatch => {
   dispatch({ type: "REGISTER_REQUEST" });
 
   axios
-    .post("http://lambdaschool-cookbook2.herokuapp.com/auth/register", {
+    .post("https://lambdaschool-cookbook2.herokuapp.com/auth/register", {
       username,
       password
     })
-    .then(response => dispatch({ type: "REGISTER_SUCCESS" }))
-    .catch(error => dispatch({ type: "REGISTER_FAILURE" }));
+    .then(response => {
+      localStorage.setItem("token", response.data.token);
+
+      dispatch({ type: "LOGIN_SUCCESS" });
+      dispatch(push("/recipes"));
+    })
+    .catch(error =>
+      dispatch({
+        type: "REGISTER_FAILURE",
+        message: error.response.data.message
+      })
+    );
 };

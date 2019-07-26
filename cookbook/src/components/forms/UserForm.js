@@ -2,7 +2,7 @@ import React from "react";
 
 export default props => (
   <form onSubmit={props.onSubmit}>
-    <div class="message">{props.message}</div>
+    <div className="message">{props.message}</div>
     <input
       type="text"
       name="username"
