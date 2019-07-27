@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { registerUser } from "../../actions";
-import UserForm from "../../components/forms/UserForm";
+import UserForm from "../../components/auth/AuthForm";
 
 class Register extends Component {
   state = {
@@ -36,7 +36,7 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-  message: state.user.message
+  message: state.auth.message
 });
 
 export default connect(

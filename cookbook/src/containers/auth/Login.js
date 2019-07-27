@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { authenticateUser } from "../../actions";
-import UserForm from "../../components/forms/UserForm";
+import UserForm from "../../components/auth/AuthForm";
 
 class Login extends Component {
   state = {
@@ -45,8 +45,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.user.isLoggedIn,
-  message: state.user.message
+  message: state.auth.message
 });
 
 export default connect(

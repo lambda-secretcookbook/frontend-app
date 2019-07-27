@@ -4,8 +4,8 @@ import { Switch, Route } from "react-router-dom";
 import Header from "./Header";
 import NoMatch from "./NoMatch";
 
-import Login from "../containers/authentication/Login";
-import Register from "../containers/authentication/Register";
+import Login from "../containers/auth/Login";
+import Register from "../containers/auth/Register";
 
 export default () => (
   <div className="app">

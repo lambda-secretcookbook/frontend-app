@@ -11,31 +11,41 @@ const initalState = {
   message: ""
 };
 
-export const userReducer = (state = initalState, action) => {
+export const authReducer = (state = initalState, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
       return {
+        ...state,
         message: ""
       };
 
     case LOGIN_SUCCESS:
-      break;
+      return {
+        ...state,
+        message: ""
+      };
 
     case LOGIN_FAILURE:
       return {
+        ...state,
         message: action.message
       };
 
     case REGISTER_REQUEST:
       return {
+        ...state,
         message: ""
       };
 
     case REGISTER_SUCCESS:
-      break;
+      return {
+        ...state,
+        message: ""
+      };
 
     case REGISTER_FAILURE:
       return {
+        ...state,
         message: action.message
       };
 
