@@ -1,8 +1,9 @@
 import React from "react";
+import Error from "./Error";
 
 export default () => (
-  <div className="not-found">
-    <h1>Page not found</h1>
-    <p>The page you were looking for was unable to be found.</p>
-  </div>
+  <Error
+    type="Page not found"
+    message="The page you were looking for was unable to be found"
+  />
 );

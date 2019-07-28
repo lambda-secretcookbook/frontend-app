@@ -7,6 +7,9 @@ import NoMatch from "./NoMatch";
 import Login from "../containers/auth/Login";
 import Register from "../containers/auth/Register";
 
+import RecipeList from "../containers/recipes/RecipeList";
+import RecipeCreate from "../containers/recipes/RecipeCreate";
+
 export default () => (
   <div className="app">
     <Header />
@@ -14,11 +17,8 @@ export default () => (
       <Route exact path="/" render={() => <div>Home</div>} />
       <Route path="/account/login" component={Login} />
       <Route path="/account/register" component={Register} />
-      <Route exact path="/recipes" render={() => <div>Recipes List</div>} />
-      <Route
-        path="/recipes/create"
-        render={() => <div>Create New Recipe</div>}
-      />
+      <Route exact path="/recipes" component={RecipeList} />
+      <Route path="/recipes/new" component={RecipeCreate} />
       <Route exact path="/recipe/:id" render={() => <div>Recipe Detail</div>} />
       <Route path="/recipe/:id/edit" render={() => <div>Edit Recipe</div>} />
       <Route

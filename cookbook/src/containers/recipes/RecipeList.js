@@ -1,16 +1,58 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+import Error from "../../components/Error";
+
+import { getRecipes } from "../../actions";
+import Recipe from "../../components/recipes/Recipe";
+
 class RecipeList extends Component {
+  static defaultProps = {
+    // Placeholders
+    recipes: [
+      {
+        id: 1,
+        name: "Test",
+        source: "Gram Gram",
+        notes: "An oldie but a goodie"
+      }
+    ]
+  };
+
+  componentDidMount() {
+    this.props.getRecipes();
+  }
+
   render() {
-    <div className="recipes">{/* TODO */}</div>;
+    if (this.props.isFetchingRecipes) {
+      return <div className="loading">Loading...</div>;
+    }
+
+    if (this.props.message) {
+      return <Error message={this.props.message} />;
+    }
+
+    return (
+      <div className="recipes">
+        {this.props.recipes.map(recipe => (
+          <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
+            <Recipe recipe={recipe} />
+          </Link>
+        ))}
+        <Link to="/recipes/new">Create new recipe</Link>
+      </div>
+    );
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  recipes: state.recipes.recipes,
+  isFetchingRecipes: state.recipes.isFetchingRecipes,
+  message: state.recipes.message
+});
 
 export default connect(
-  undefined,
-  {}
+  mapStateToProps,
+  { getRecipes }
 )(RecipeList);
