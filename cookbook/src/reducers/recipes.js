@@ -22,7 +22,7 @@ export const recipesReducer = (state = initialState, action) => {
     case FETCH_RECIPES_SUCCESS:
       return {
         ...state,
-        recipes: action.recipes,
+        recipes: [...state, action.recipes],
         isFetchingRecipes: false
       };
 

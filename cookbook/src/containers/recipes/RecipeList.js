@@ -8,18 +8,6 @@ import { getRecipes } from "../../actions";
 import Recipe from "../../components/recipes/Recipe";
 
 class RecipeList extends Component {
-  static defaultProps = {
-    // Placeholders
-    recipes: [
-      {
-        id: 1,
-        name: "Test",
-        source: "Gram Gram",
-        notes: "An oldie but a goodie"
-      }
-    ]
-  };
-
   componentDidMount() {
     this.props.getRecipes();
   }

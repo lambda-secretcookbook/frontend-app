@@ -1,13 +1,14 @@
 import React from "react";
 
 export default props => (
-  <form onSubmit={props.onSubmit}>
+  <form onSubmit={props.createRecipe}>
     <input
       type="text"
       name="title"
       placeholder="Title"
       value={props.titleValue}
       required
+      onChange={props.handleInput}
     />
 
     <input
@@ -15,6 +16,7 @@ export default props => (
       name="source"
       placeholder="Source"
       value={props.sourceValue}
+      onChange={props.handleInput}
     />
 
     <input
@@ -22,20 +24,7 @@ export default props => (
       name="notes"
       placeholder="Notes"
       value={props.notesValue}
-    />
-
-    <input
-      type="text"
-      name="ingredients"
-      placeholder="Ingredients"
-      value={props.ingredientValue}
-    />
-
-    <input
-      type="text"
-      name="instructions"
-      placeholder="Instructions"
-      value={props.instructionValue}
+      onChange={props.handleInput}
     />
 
     <input type="submit" value="Add recipe" />

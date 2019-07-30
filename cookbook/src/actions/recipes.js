@@ -1,3 +1,4 @@
+import { push } from "connected-react-router";
 import API from "../utils/API";
 
 export const FETCH_RECIPES_REQUEST = "FETCH_RECIPES_REQUEST";
@@ -9,13 +10,12 @@ export const getRecipes = () => dispatch => {
 
   API.get("/recipes")
     .then(response => {
-      const payload = response.data;
-      dispatch({ type: FETCH_RECIPES_SUCCESS }, payload);
+      dispatch({ type: FETCH_RECIPES_SUCCESS, payload: response.data });
     })
     .catch(error =>
       dispatch({
-        type: FETCH_RECIPES_FAILURE,
-        message: error.response.data.message
+        type: FETCH_RECIPES_FAILURE
+        // message: error.response.data.message
       })
     );
 };
@@ -23,3 +23,27 @@ export const getRecipes = () => dispatch => {
 export const FETCH_RECIPE_REQUEST = "FETCH_RECIPE_REQUEST";
 export const FETCH_RECIPE_SUCCESS = "FETCH_RECIPE_SUCCESS";
 export const FETCH_RECIPE_FAILURE = "FETCH_RECIPE_FAILURE";
+
+export const getRecipe = id => dispatch => {
+  dispatch({ type: FETCH_RECIPE_REQUEST });
+};
+
+export const CREATE_RECIPE_REQUEST = "CREATE_RECIPE_REQUEST";
+export const CREATE_RECIPE_SUCCESS = "CREATE_RECIPE_SUCCESS";
+export const CREATE_RECIPE_FAILURE = "CREATE_RECIPE_FAILURE";
+
+export const createRecipe = recipe => dispatch => {
+  dispatch({ type: CREATE_RECIPE_REQUEST });
+
+  API.post("/recipes", recipe)
+    .then(response => {
+      dispatch({ type: CREATE_RECIPE_SUCCESS, recipes: response.data });
+      dispatch(push("/recipes"));
+    })
+    .catch(error => {
+      dispatch({
+        type: CREATE_RECIPE_FAILURE,
+        message: error.response.data.message
+      });
+    });
+};

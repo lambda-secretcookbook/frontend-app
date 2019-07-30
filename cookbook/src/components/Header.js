@@ -6,6 +6,7 @@ export default () => (
     <h1>Secret Cookbook</h1>
     <nav>
       <NavLink to="/">Home</NavLink>
+      <NavLink to="/recipes/new">Create New Recipe</NavLink>
     </nav>
   </header>
 );
