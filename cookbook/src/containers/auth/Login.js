@@ -30,7 +30,7 @@ class Login extends Component {
           onSubmit={this.authenticateUser}
           usernameValue={this.state.username}
           passwordValue={this.state.password}
-          message={this.props.message}
+          errorMessage={this.props.errorMessage}
           handleChange={this.handleChange}
           submitText="Log in"
         />
@@ -45,7 +45,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  message: state.auth.message
+  errorMessage: state.auth.errorMessage
 });
 
 export default connect(

@@ -27,7 +27,7 @@ class Register extends Component {
         onSubmit={this.registerUser}
         usernameValue={this.state.username}
         passwordValue={this.state.password}
-        message={this.props.message}
+        errorMessage={this.props.errorMessage}
         handleChange={this.handleChange}
         submitText="Register"
       />
@@ -36,7 +36,7 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-  message: state.auth.message
+  errorMessage: state.auth.errorMessage
 });
 
 export default connect(

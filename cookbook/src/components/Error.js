@@ -1,9 +1,9 @@
 import React from "react";
 
-const Error = ({ type, message }) => (
+const Error = ({ type, errorMessage }) => (
   <div className="error">
     <h1>{type ? type : "Internal Server Error"}</h1>
-    <p>{message}</p>
+    <p>{errorMessage}</p>
   </div>
 );
 

@@ -8,45 +8,41 @@ import {
 } from "../actions";
 
 const initalState = {
-  message: ""
+  errorMessage: ""
 };
 
 export const authReducer = (state = initalState, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
       return {
-        ...state,
-        message: ""
+        ...state
       };
 
     case LOGIN_SUCCESS:
       return {
-        ...state,
-        message: ""
+        ...state
       };
 
     case LOGIN_FAILURE:
       return {
         ...state,
-        message: action.message
+        errorMessage: action.errorMessage
       };
 
     case REGISTER_REQUEST:
       return {
-        ...state,
-        message: ""
+        ...state
       };
 
     case REGISTER_SUCCESS:
       return {
-        ...state,
-        message: ""
+        ...state
       };
 
     case REGISTER_FAILURE:
       return {
         ...state,
-        message: action.message
+        errorMessage: action.errorMessage
       };
 
     default:

@@ -2,7 +2,8 @@ import React from "react";
 
 const AuthForm = props => (
   <form onSubmit={props.onSubmit}>
-    <div className="message">{props.message}</div>
+    <div className="message error">{props.errorMessage}</div>
+
     <input
       type="text"
       name="username"

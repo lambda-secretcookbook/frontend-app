@@ -14,8 +14,8 @@ export const getRecipes = () => dispatch => {
     })
     .catch(error =>
       dispatch({
-        type: FETCH_RECIPES_FAILURE
-        // message: error.response.data.message
+        type: FETCH_RECIPES_FAILURE,
+        errorMessage: error.response.data.message
       })
     );
 };
@@ -26,6 +26,17 @@ export const FETCH_RECIPE_FAILURE = "FETCH_RECIPE_FAILURE";
 
 export const getRecipe = id => dispatch => {
   dispatch({ type: FETCH_RECIPE_REQUEST });
+
+  API.get(`/recipe/${id}`)
+    .then(response =>
+      dispatch({ type: FETCH_RECIPE_SUCCESS, recipe: response.data.recipe })
+    )
+    .catch(error => {
+      dispatch({
+        type: FETCH_RECIPES_FAILURE,
+        errorMessage: error.response.data
+      });
+    });
 };
 
 export const CREATE_RECIPE_REQUEST = "CREATE_RECIPE_REQUEST";
@@ -43,7 +54,7 @@ export const createRecipe = recipe => dispatch => {
     .catch(error => {
       dispatch({
         type: CREATE_RECIPE_FAILURE,
-        message: error.response.data.message
+        errorMessage: error.response.data.errorMessage
       });
     });
 };

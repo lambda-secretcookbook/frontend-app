@@ -4,7 +4,7 @@ import Error from "./Error";
 export const NoMatch = () => (
   <Error
     type="Page not found"
-    message="The page you were looking for was unable to be found"
+    errorMessage="The page you were looking for was unable to be found"
   />
 );
 
