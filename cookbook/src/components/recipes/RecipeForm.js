@@ -1,6 +1,6 @@
 import React from "react";
 
-export default props => (
+const RecipeForm = props => (
   <form onSubmit={props.createRecipe}>
     <input
       type="text"
@@ -30,3 +30,5 @@ export default props => (
     <input type="submit" value="Add recipe" />
   </form>
 );
+
+export default RecipeForm;

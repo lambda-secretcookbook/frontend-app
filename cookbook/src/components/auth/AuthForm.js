@@ -1,6 +1,6 @@
 import React from "react";
 
-export default props => (
+const AuthForm = props => (
   <form onSubmit={props.onSubmit}>
     <div className="message">{props.message}</div>
     <input
@@ -24,3 +24,5 @@ export default props => (
     <input type="submit" value={props.submitText} />
   </form>
 );
+
+export default AuthForm;

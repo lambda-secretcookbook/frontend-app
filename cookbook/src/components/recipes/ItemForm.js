@@ -1,6 +1,6 @@
 import React from "react";
 
-export default props => (
+const ItemForm = props => (
   <form onSubmit={props.onSubmit}>
     <h2>{props.itemText}</h2>
     <ul className="items">
@@ -21,3 +21,5 @@ export default props => (
     <input type="submit" value="Add" />
   </form>
 );
+
+export default ItemForm;

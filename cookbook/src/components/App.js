@@ -10,7 +10,7 @@ import Register from "../containers/auth/Register";
 import RecipeList from "../containers/recipes/RecipeList";
 import RecipeCreate from "../containers/recipes/RecipeCreate";
 
-export default () => (
+const App = () => (
   <div className="app">
     <Header />
     <Switch>
@@ -29,3 +29,5 @@ export default () => (
     </Switch>
   </div>
 );
+
+export default App;
