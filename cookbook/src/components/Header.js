@@ -6,7 +6,7 @@ export const Header = () => (
     <h1>Secret Cookbook</h1>
     <nav>
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/recipes/new">Create New Recipe</NavLink>
+      <NavLink to="/recipes/new">New Recipe</NavLink>
     </nav>
   </header>
 );

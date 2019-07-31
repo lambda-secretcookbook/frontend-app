@@ -12,6 +12,7 @@ import Login from "./containers/auth/Login";
 import Register from "./containers/auth/Register";
 
 import RecipeList from "./containers/recipes/RecipeList";
+import RecipeDetail from "./containers/recipes/RecipeDetail";
 import RecipeCreate from "./containers/recipes/RecipeCreate";
 
 import configureStore, { history } from "./configureStore";
@@ -27,11 +28,7 @@ ReactDOM.render(
         <Route path="/account/register" component={Register} />
         <Route exact path="/recipes" component={RecipeList} />
         <Route path="/recipes/new" component={RecipeCreate} />
-        <Route
-          exact
-          path="/recipe/:id"
-          render={() => <div>Recipe Detail</div>}
-        />
+        <Route exact path="/recipe/:id" component={RecipeDetail} />
         <Route path="/recipe/:id/edit" render={() => <div>Edit Recipe</div>} />
         <Route
           path="/recipe/:id/delete"

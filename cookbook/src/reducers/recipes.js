@@ -1,13 +1,18 @@
 import {
   FETCH_RECIPES_REQUEST,
   FETCH_RECIPES_SUCCESS,
-  FETCH_RECIPES_FAILURE
+  FETCH_RECIPES_FAILURE,
+  FETCH_RECIPE_REQUEST,
+  FETCH_RECIPE_SUCCESS,
+  FETCH_RECIPE_FAILURE
 } from "../actions";
 
 const initialState = {
   recipesList: [],
+  currentRecipe: [],
   isFetchingRecipes: false,
-  message: ""
+  isFetchingRecipe: false,
+  errorMessage: ""
 };
 
 export const recipesReducer = (state = initialState, action) => {
@@ -29,9 +34,28 @@ export const recipesReducer = (state = initialState, action) => {
     case FETCH_RECIPES_FAILURE:
       return {
         ...state,
-        recipesList: [],
         isFetchingRecipes: false,
-        message: action.message
+        errorMessage: action.error
+      };
+
+    case FETCH_RECIPE_REQUEST:
+      return {
+        ...state,
+        isFetchingRecipe: true
+      };
+
+    case FETCH_RECIPE_SUCCESS:
+      return {
+        ...state,
+        isFetchingRecipe: false,
+        currentRecipe: action.recipe
+      };
+
+    case FETCH_RECIPE_FAILURE:
+      return {
+        ...state,
+        isFetchingRecipe: false,
+        errorMessage: action.error
       };
 
     default:

@@ -27,7 +27,7 @@ export const FETCH_RECIPE_FAILURE = "FETCH_RECIPE_FAILURE";
 export const getRecipe = id => dispatch => {
   dispatch({ type: FETCH_RECIPE_REQUEST });
 
-  API.get(`/recipe/${id}`)
+  API.get(`/recipes/${id}`)
     .then(response =>
       dispatch({ type: FETCH_RECIPE_SUCCESS, recipe: response.data.recipe })
     )
