@@ -10,7 +10,7 @@ export const getRecipes = () => dispatch => {
 
   API.get("/recipes")
     .then(response => {
-      dispatch({ type: FETCH_RECIPES_SUCCESS, payload: response.data });
+      dispatch({ type: FETCH_RECIPES_SUCCESS, recipes: response.data.recipes });
     })
     .catch(error =>
       dispatch({

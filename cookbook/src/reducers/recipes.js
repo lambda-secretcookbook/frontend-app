@@ -5,7 +5,7 @@ import {
 } from "../actions";
 
 const initialState = {
-  recipes: [],
+  recipesList: [],
   isFetchingRecipes: false,
   message: ""
 };
@@ -15,21 +15,21 @@ export const recipesReducer = (state = initialState, action) => {
     case FETCH_RECIPES_REQUEST:
       return {
         ...state,
-        recipes: [],
+        recipesList: [],
         isFetchingRecipes: true
       };
 
     case FETCH_RECIPES_SUCCESS:
       return {
         ...state,
-        recipes: [...state, action.recipes],
+        recipesList: action.recipes,
         isFetchingRecipes: false
       };
 
     case FETCH_RECIPES_FAILURE:
       return {
         ...state,
-        recipes: [],
+        recipesList: [],
         isFetchingRecipes: false,
         message: action.message
       };

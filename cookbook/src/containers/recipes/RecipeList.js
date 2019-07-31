@@ -35,7 +35,7 @@ class RecipeList extends Component {
 }
 
 const mapStateToProps = state => ({
-  recipes: state.recipes.recipes,
+  recipes: state.recipes.recipesList,
   isFetchingRecipes: state.recipes.isFetchingRecipes,
   message: state.recipes.message
 });
