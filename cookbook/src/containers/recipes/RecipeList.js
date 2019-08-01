@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+import { Button } from "reactstrap";
+
 import Error from "../../components/Error";
 
 import { getRecipes } from "../../actions";
@@ -28,7 +30,9 @@ class RecipeList extends Component {
             <RecipeCard recipe={recipe} />
           </Link>
         ))}
-        <Link to="/recipes/new">Create new recipe</Link>
+        <Button tag={Link} to="/recipes/new">
+          Create new recipe
+        </Button>
       </div>
     );
   }

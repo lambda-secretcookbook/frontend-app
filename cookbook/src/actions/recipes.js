@@ -10,7 +10,10 @@ export const getRecipes = () => dispatch => {
 
   API.get("/recipes")
     .then(response => {
-      dispatch({ type: FETCH_RECIPES_SUCCESS, recipes: response.data.recipes });
+      dispatch({
+        type: FETCH_RECIPES_SUCCESS,
+        recipesList: response.data.recipes
+      });
     })
     .catch(error =>
       dispatch({
@@ -29,12 +32,15 @@ export const getRecipe = id => dispatch => {
 
   API.get(`/recipes/${id}`)
     .then(response =>
-      dispatch({ type: FETCH_RECIPE_SUCCESS, recipe: response.data.recipe })
+      dispatch({
+        type: FETCH_RECIPE_SUCCESS,
+        currentRecipe: response.data.recipe
+      })
     )
     .catch(error => {
       dispatch({
         type: FETCH_RECIPES_FAILURE,
-        errorMessage: error.response.data
+        errorMessage: error.response.data.message
       });
     });
 };
@@ -54,7 +60,9 @@ export const createRecipe = recipe => dispatch => {
     .catch(error => {
       dispatch({
         type: CREATE_RECIPE_FAILURE,
-        errorMessage: error.response.data.errorMessage
+        errorMessage: error.response.data.message
       });
     });
 };
+
+export const deleteRecipe = id => dispatch => {};

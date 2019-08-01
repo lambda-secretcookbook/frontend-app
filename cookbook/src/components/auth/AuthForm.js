@@ -1,19 +1,21 @@
 import React from "react";
+import { Alert, Button, Form, Label, Input } from "reactstrap";
 
 const AuthForm = props => (
-  <form onSubmit={props.onSubmit}>
-    <div className="message error">{props.errorMessage}</div>
+  <Form onSubmit={props.onSubmit}>
+    <Alert color="danger">{props.errorMessage}</Alert>
 
-    <input
+    <Label for="username">Username</Label>
+    <Input
       type="text"
       name="username"
       value={props.usernameValue}
-      placeholder="Username"
       onChange={props.handleChange}
       required
     />
 
-    <input
+    <Label for="password">Password</Label>
+    <Input
       type="password"
       name="password"
       value={props.passwordValue}
@@ -22,8 +24,8 @@ const AuthForm = props => (
       required
     />
 
-    <input type="submit" value={props.submitText} />
-  </form>
+    <Button type="submit">{props.submitText}</Button>
+  </Form>
 );
 
 export default AuthForm;

@@ -1,8 +1,9 @@
 import React from "react";
+import { Button, Form, Label, Input } from "reactstrap";
 
 const RecipeForm = props => (
-  <form onSubmit={props.createRecipe}>
-    <input
+  <Form onSubmit={props.createRecipe}>
+    <Input
       type="text"
       name="title"
       placeholder="Title"
@@ -11,7 +12,7 @@ const RecipeForm = props => (
       onChange={props.handleInput}
     />
 
-    <input
+    <Input
       type="text"
       name="source"
       placeholder="Source"
@@ -19,7 +20,7 @@ const RecipeForm = props => (
       onChange={props.handleInput}
     />
 
-    <input
+    <Input
       type="text"
       name="notes"
       placeholder="Notes"
@@ -27,8 +28,8 @@ const RecipeForm = props => (
       onChange={props.handleInput}
     />
 
-    <input type="submit" value="Add recipe" />
-  </form>
+    <Button type="submit">Add</Button>
+  </Form>
 );
 
 export default RecipeForm;

@@ -27,7 +27,7 @@ export const recipesReducer = (state = initialState, action) => {
     case FETCH_RECIPES_SUCCESS:
       return {
         ...state,
-        recipesList: action.recipes,
+        recipesList: action.recipesList,
         isFetchingRecipes: false
       };
 
@@ -35,7 +35,7 @@ export const recipesReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetchingRecipes: false,
-        errorMessage: action.error
+        errorMessage: action.errorMessage
       };
 
     case FETCH_RECIPE_REQUEST:
@@ -48,14 +48,14 @@ export const recipesReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetchingRecipe: false,
-        currentRecipe: action.recipe
+        currentRecipe: action.currentRecipe
       };
 
     case FETCH_RECIPE_FAILURE:
       return {
         ...state,
         isFetchingRecipe: false,
-        errorMessage: action.error
+        errorMessage: action.errorMessage
       };
 
     default:

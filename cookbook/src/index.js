@@ -5,7 +5,11 @@ import { Provider } from "react-redux";
 import { ConnectedRouter } from "connected-react-router";
 import { Switch, Route } from "react-router-dom";
 
-import Header from "./components/Header";
+import { Container } from "reactstrap";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import Masthead from "./components/Masthead";
 import NoMatch from "./components/NoMatch";
 
 import Home from "./components/Home";
@@ -24,24 +28,26 @@ const store = configureStore();
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/account/login" component={Login} />
-        <Route path="/account/register" component={Register} />
-        <PrivateRoute exact path="/recipes" component={RecipeList} />
-        <PrivateRoute path="/recipes/new" component={RecipeCreate} />
-        <PrivateRoute exact path="/recipe/:id" component={RecipeDetail} />
-        <PrivateRoute
-          path="/recipe/:id/edit"
-          render={() => <div>Edit Recipe</div>}
-        />
-        <PrivateRoute
-          path="/recipe/:id/delete"
-          render={() => <div>Delete Recipe</div>}
-        />
-        <Route component={NoMatch} />
-      </Switch>
+      <Container>
+        <Masthead />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/account/login" component={Login} />
+          <Route path="/account/register" component={Register} />
+          <PrivateRoute exact path="/recipes" component={RecipeList} />
+          <PrivateRoute path="/recipes/new" component={RecipeCreate} />
+          <PrivateRoute exact path="/recipe/:id" component={RecipeDetail} />
+          <PrivateRoute
+            path="/recipe/:id/edit"
+            render={() => <div>Edit Recipe</div>}
+          />
+          <PrivateRoute
+            path="/recipe/:id/delete"
+            render={() => <div>Delete Recipe</div>}
+          />
+          <Route component={NoMatch} />
+        </Switch>
+      </Container>
     </ConnectedRouter>
   </Provider>,
   document.getElementById("root")
