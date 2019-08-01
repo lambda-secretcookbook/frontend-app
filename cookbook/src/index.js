@@ -8,6 +8,8 @@ import { Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import NoMatch from "./components/NoMatch";
 
+import Home from "./components/Home";
+
 import PrivateRoute from "./components/auth/PrivateRoute";
 import Login from "./containers/auth/Login";
 import Register from "./containers/auth/Register";
@@ -24,7 +26,7 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <Header />
       <Switch>
-        <Route exact path="/" render={() => <div>Home</div>} />
+        <Route exact path="/" component={Home} />
         <Route path="/account/login" component={Login} />
         <Route path="/account/register" component={Register} />
         <PrivateRoute exact path="/recipes" component={RecipeList} />

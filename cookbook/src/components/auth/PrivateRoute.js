@@ -1,17 +1,12 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-
-const hasToken = localStorage.hasOwnProperty("token");
+import { hasToken } from "../../utils/token";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      hasToken === true ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to="/account/login" />
-      )
+      hasToken ? <Component {...props} /> : <Redirect to="/account/login" />
     }
   />
 );
