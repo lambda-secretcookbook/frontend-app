@@ -54,7 +54,7 @@ export const createRecipe = recipe => dispatch => {
 
   API.post("/recipes", recipe)
     .then(response => {
-      dispatch({ type: CREATE_RECIPE_SUCCESS, recipes: response.data });
+      dispatch({ type: CREATE_RECIPE_SUCCESS });
       dispatch(push("/recipes"));
     })
     .catch(error => {
@@ -65,4 +65,22 @@ export const createRecipe = recipe => dispatch => {
     });
 };
 
-export const deleteRecipe = id => dispatch => {};
+export const DELETE_RECIPE_REQUEST = "DELETE_RECIPE_REQUEST";
+export const DELETE_RECIPE_SUCCESS = "DELETE_RECIPE_SUCCESS";
+export const DELETE_RECIPE_FAILURE = "DELETE_RECIPE_FAILURE";
+
+export const deleteRecipe = id => dispatch => {
+  dispatch({ type: DELETE_RECIPE_REQUEST });
+
+  API.delete(`/recipes/${id}`)
+    .then(response => {
+      dispatch({ type: DELETE_RECIPE_SUCCESS });
+      dispatch(push("/recipes"));
+    })
+    .catch(error =>
+      dispatch({
+        type: DELETE_RECIPE_FAILURE,
+        errorMessage: error.response.data
+      })
+    );
+};

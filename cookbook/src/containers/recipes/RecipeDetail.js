@@ -1,18 +1,28 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Button, Spinner } from "react-bootstrap";
 
 import Error from "../../components/Error";
-
-import { getRecipe } from "../../actions";
+import { getRecipe, deleteRecipe } from "../../actions";
 
 class RecipeDetail extends Component {
   componentDidMount() {
     this.props.getRecipe(this.props.id);
   }
 
+  deleteRecipe = event => {
+    event.preventDefault();
+    this.setState({ confirmDeleteModal: false });
+    this.props.deleteRecipe(this.props.id);
+  };
+
   render() {
     if (this.props.isFetchingRecipe) {
-      return <div className="loading">Loading...</div>;
+      return (
+        <Spinner animation="border" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      );
     }
 
     if (this.props.errorMessage) {
@@ -35,6 +45,9 @@ class RecipeDetail extends Component {
             <div>{item}</div>
           ))} */}
         </section>
+        <Button variant="danger" onClick={this.deleteRecipe}>
+          Delete
+        </Button>
       </div>
     );
   }
@@ -52,5 +65,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { getRecipe }
+  { getRecipe, deleteRecipe }
 )(RecipeDetail);

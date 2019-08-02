@@ -1,7 +1,9 @@
 import React from "react";
 
+import { Form, Button } from "react-bootstrap";
+
 const ItemForm = props => (
-  <form onSubmit={props.onSubmit}>
+  <Form onSubmit={props.onSubmit}>
     <h2>{props.itemText}</h2>
     <ul className="items">
       {props.items.map((item, index) => (
@@ -9,7 +11,7 @@ const ItemForm = props => (
       ))}
     </ul>
 
-    <input
+    <Form.Control
       type="text"
       name={props.inputValueName}
       placeholder={props.itemText}
@@ -18,8 +20,8 @@ const ItemForm = props => (
       onChange={props.handleInput}
     />
 
-    <input type="submit" value="Add" />
-  </form>
+    <Button type="submit">Add</Button>
+  </Form>
 );
 
 export default ItemForm;

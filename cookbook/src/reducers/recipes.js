@@ -4,7 +4,13 @@ import {
   FETCH_RECIPES_FAILURE,
   FETCH_RECIPE_REQUEST,
   FETCH_RECIPE_SUCCESS,
-  FETCH_RECIPE_FAILURE
+  FETCH_RECIPE_FAILURE,
+  CREATE_RECIPE_REQUEST,
+  CREATE_RECIPE_SUCCESS,
+  CREATE_RECIPE_FAILURE,
+  DELETE_RECIPE_REQUEST,
+  DELETE_RECIPE_SUCCESS,
+  DELETE_RECIPE_FAILURE
 } from "../actions";
 
 const initialState = {
@@ -39,10 +45,7 @@ export const recipesReducer = (state = initialState, action) => {
       };
 
     case FETCH_RECIPE_REQUEST:
-      return {
-        ...state,
-        isFetchingRecipe: true
-      };
+      return { ...state, isFetchingRecipe: true };
 
     case FETCH_RECIPE_SUCCESS:
       return {
@@ -57,6 +60,24 @@ export const recipesReducer = (state = initialState, action) => {
         isFetchingRecipe: false,
         errorMessage: action.errorMessage
       };
+
+    case CREATE_RECIPE_REQUEST:
+      return { ...state };
+
+    case CREATE_RECIPE_SUCCESS:
+      return { ...state };
+
+    case CREATE_RECIPE_FAILURE:
+      return { ...state, errorMessage: action.errorMessage };
+
+    case DELETE_RECIPE_REQUEST:
+      return { ...state };
+
+    case DELETE_RECIPE_SUCCESS:
+      return { ...state };
+
+    case DELETE_RECIPE_FAILURE:
+      return { ...state, errorMessage: action.errorMessage };
 
     default:
       return state;

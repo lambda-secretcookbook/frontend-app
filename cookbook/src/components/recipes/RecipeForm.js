@@ -1,9 +1,9 @@
 import React from "react";
-import { Button, Form, Label, Input } from "reactstrap";
+import { Form, Button } from "react-bootstrap";
 
 const RecipeForm = props => (
   <Form onSubmit={props.createRecipe}>
-    <Input
+    <Form.Control
       type="text"
       name="title"
       placeholder="Title"
@@ -12,7 +12,7 @@ const RecipeForm = props => (
       onChange={props.handleInput}
     />
 
-    <Input
+    <Form.Control
       type="text"
       name="source"
       placeholder="Source"
@@ -20,7 +20,7 @@ const RecipeForm = props => (
       onChange={props.handleInput}
     />
 
-    <Input
+    <Form.Control
       type="text"
       name="notes"
       placeholder="Notes"

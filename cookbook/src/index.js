@@ -5,9 +5,7 @@ import { Provider } from "react-redux";
 import { ConnectedRouter } from "connected-react-router";
 import { Switch, Route } from "react-router-dom";
 
-import { Container } from "reactstrap";
-
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from "react-bootstrap";
 
 import Masthead from "./components/Masthead";
 import NoMatch from "./components/NoMatch";
@@ -28,8 +26,8 @@ const store = configureStore();
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
+      <Masthead />
       <Container>
-        <Masthead />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/account/login" component={Login} />

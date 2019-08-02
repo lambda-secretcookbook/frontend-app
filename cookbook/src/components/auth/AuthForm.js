@@ -1,12 +1,17 @@
 import React from "react";
-import { Alert, Button, Form, Label, Input } from "reactstrap";
+
+import { Alert, Form, Button } from "react-bootstrap";
 
 const AuthForm = props => (
   <Form onSubmit={props.onSubmit}>
-    <Alert color="danger">{props.errorMessage}</Alert>
+    {props.errorMessage ? (
+      <Alert variant="danger">{props.errorMessage}</Alert>
+    ) : (
+      undefined
+    )}
 
-    <Label for="username">Username</Label>
-    <Input
+    <Form.Label for="username">Username</Form.Label>
+    <Form.Input
       type="text"
       name="username"
       value={props.usernameValue}
@@ -14,8 +19,8 @@ const AuthForm = props => (
       required
     />
 
-    <Label for="password">Password</Label>
-    <Input
+    <Form.Label for="password">Password</Form.Label>
+    <Form.Input
       type="password"
       name="password"
       value={props.passwordValue}
@@ -24,7 +29,9 @@ const AuthForm = props => (
       required
     />
 
-    <Button type="submit">{props.submitText}</Button>
+    <Button variant="primary" type="submit">
+      {props.submitText}
+    </Button>
   </Form>
 );
 
