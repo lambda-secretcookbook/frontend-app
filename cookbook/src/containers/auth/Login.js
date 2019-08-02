@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { authenticateUser } from "../../actions";
-import UserForm from "../../components/auth/AuthForm";
+import AuthForm from "../../components/auth/AuthForm";
 
 class Login extends Component {
   state = {
@@ -26,7 +26,7 @@ class Login extends Component {
   render() {
     return (
       <>
-        <UserForm
+        <AuthForm
           onSubmit={this.authenticateUser}
           usernameValue={this.state.username}
           passwordValue={this.state.password}

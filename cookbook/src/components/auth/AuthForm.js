@@ -10,24 +10,27 @@ const AuthForm = props => (
       undefined
     )}
 
-    <Form.Label for="username">Username</Form.Label>
-    <Form.Control
-      type="text"
-      name="username"
-      value={props.usernameValue}
-      onChange={props.handleChange}
-      required
-    />
+    <Form.Group>
+      <Form.Label for="username">Username</Form.Label>
+      <Form.Control
+        type="text"
+        name="username"
+        value={props.usernameValue}
+        onChange={props.handleChange}
+        required
+      />
+    </Form.Group>
 
-    <Form.Label for="password">Password</Form.Label>
-    <Form.Control
-      type="password"
-      name="password"
-      value={props.passwordValue}
-      placeholder="Password"
-      onChange={props.handleChange}
-      required
-    />
+    <Form.Group>
+      <Form.Label for="password">Password</Form.Label>
+      <Form.Control
+        type="password"
+        name="password"
+        value={props.passwordValue}
+        onChange={props.handleChange}
+        required
+      />
+    </Form.Group>
 
     <Button variant="primary" type="submit">
       {props.submitText}

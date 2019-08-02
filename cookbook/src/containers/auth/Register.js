@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { registerUser } from "../../actions";
-import UserForm from "../../components/auth/AuthForm";
+import AuthForm from "../../components/auth/AuthForm";
 
 class Register extends Component {
   state = {
@@ -23,7 +23,7 @@ class Register extends Component {
 
   render() {
     return (
-      <UserForm
+      <AuthForm
         onSubmit={this.registerUser}
         usernameValue={this.state.username}
         passwordValue={this.state.password}
