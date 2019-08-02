@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Card, Spinner, Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
+import Loading from "../../components/Loading";
 import Error from "../../components/Error";
 import { getRecipes } from "../../actions";
 
@@ -13,11 +14,7 @@ class RecipeList extends Component {
 
   render() {
     if (this.props.isFetchingRecipes) {
-      return (
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      );
+      return <Loading />;
     }
 
     if (this.props.errorMessage) {
@@ -30,12 +27,15 @@ class RecipeList extends Component {
           <Card>
             <Card.Body>
               <Card.Title>{recipe.title}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">
+                {recipe.source}
+              </Card.Subtitle>
               <Card.Text>{recipe.notes}</Card.Text>
               <Card.Link href={`/recipe/${recipe.id}`}>View</Card.Link>
             </Card.Body>
           </Card>
         ))}
-        <Link to="/recipes/new">Create New Recipe</Link>
+        <Button href="/recipes/new">Create New Recipe</Button>
       </div>
     );
   }

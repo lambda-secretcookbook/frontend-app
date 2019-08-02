@@ -1,11 +1,4 @@
-import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-  REGISTER_REQUEST,
-  REGISTER_SUCCESS,
-  REGISTER_FAILURE
-} from "../actions";
+import * as actions from "../actions";
 
 const initalState = {
   errorMessage: ""
@@ -13,33 +6,33 @@ const initalState = {
 
 export const authReducer = (state = initalState, action) => {
   switch (action.type) {
-    case LOGIN_REQUEST:
+    case actions.LOGIN_REQUEST:
       return {
         ...state
       };
 
-    case LOGIN_SUCCESS:
+    case actions.LOGIN_SUCCESS:
       return {
         ...state
       };
 
-    case LOGIN_FAILURE:
+    case actions.LOGIN_FAILURE:
       return {
         ...state,
         errorMessage: action.errorMessage
       };
 
-    case REGISTER_REQUEST:
+    case actions.REGISTER_REQUEST:
       return {
         ...state
       };
 
-    case REGISTER_SUCCESS:
+    case actions.REGISTER_SUCCESS:
       return {
         ...state
       };
 
-    case REGISTER_FAILURE:
+    case actions.REGISTER_FAILURE:
       return {
         ...state,
         errorMessage: action.errorMessage

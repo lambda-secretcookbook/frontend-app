@@ -1,30 +1,36 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Spinner } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 
+import Loading from "../../components/Loading";
 import Error from "../../components/Error";
 import ItemDetail from "../../components/recipes/ItemDetail";
+
 import { getRecipe, deleteRecipe } from "../../actions";
 
 class RecipeDetail extends Component {
-  static defaultProps = {};
+  state = {
+    showDeleteModal: false
+  };
+
   componentDidMount() {
     this.props.getRecipe(this.props.id);
   }
 
+  toggleDeleteModal = () => {
+    this.setState(prevState => ({
+      showDeleteModal: !prevState.showDeleteModal
+    }));
+  };
+
   deleteRecipe = event => {
     event.preventDefault();
-    this.setState({ confirmDeleteModal: false });
     this.props.deleteRecipe(this.props.id);
   };
 
   render() {
     if (this.props.isFetchingRecipe) {
-      return (
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      );
+      return <Loading />;
     }
 
     if (this.props.errorMessage) {
@@ -42,17 +48,47 @@ class RecipeDetail extends Component {
             <strong>Notes:</strong> {this.props.recipe.notes}
           </span>
         </header>
+
         <ItemDetail
           itemType="Ingredients"
           items={this.props.recipe.ingredients}
         />
+
         <ItemDetail
           itemType="Instructions"
           items={this.props.recipe.instructions}
         />
-        <Button variant="danger" onClick={this.deleteRecipe}>
-          Delete
-        </Button>
+
+        <div className="options">
+          <Button variant="danger" onClick={this.toggleDeleteModal}>
+            Delete
+          </Button>
+        </div>
+
+        <Modal
+          show={this.state.showDeleteModal}
+          onHide={this.toggleDeleteModal}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Delete recipe</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>
+            <p>
+              Are you sure you want to delete this recipe? It will be forever
+              lost.
+            </p>
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.toggleDeleteModal}>
+              Nevermind
+            </Button>
+            <Button variant="danger" onClick={this.deleteRecipe}>
+              Delete
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }

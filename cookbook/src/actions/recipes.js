@@ -54,13 +54,17 @@ export const createRecipe = recipe => dispatch => {
 
   API.post("/recipes", recipe)
     .then(response => {
-      dispatch({ type: CREATE_RECIPE_SUCCESS });
-      dispatch(push("/recipes"));
+      // This is required because when you add a new recipe, the backend
+      // returns a list of the new recipes instead of just
+      const recipe_id = response.data[response.data.length - 1].id;
+
+      dispatch({ type: CREATE_RECIPE_SUCCESS, recipes: response.data });
+      dispatch(push(`/recipe/${recipe_id}`));
     })
     .catch(error => {
       dispatch({
         type: CREATE_RECIPE_FAILURE,
-        errorMessage: error.response.data.message
+        errorMessage: error.response.data
       });
     });
 };

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Row, Col } from "react-bootstrap";
 
 import { createRecipe } from "../../actions";
 
@@ -63,46 +64,54 @@ class RecipeCreate extends Component {
   render() {
     return (
       <div className="recipe create">
-        <RecipeForm
-          createRecipe={this.createRecipe}
-          titleValue={this.state.title}
-          sourceValue={this.state.source}
-          notesValue={this.state.notes}
-          handleInput={this.handleInput}
-        />
+        <h1>Add New Recipe</h1>
+        <Row>
+          <Col>
+            <h1>Information</h1>
+            <RecipeForm
+              createRecipe={this.createRecipe}
+              titleValue={this.state.title}
+              sourceValue={this.state.source}
+              notesValue={this.state.notes}
+              handleInput={this.handleInput}
+              message={this.props.errorMessage}
+            />
+          </Col>
+          <Col>
+            <ItemForm
+              itemText="Ingredients"
+              onSubmit={this.addIngredient}
+              items={this.state.ingredients}
+              inputValue={this.state.ingredientValue}
+              inputValueName="ingredientValue"
+              handleInput={this.handleInput}
+            />
 
-        <ItemForm
-          itemText="Ingredients"
-          onSubmit={this.addIngredient}
-          items={this.state.ingredients}
-          inputValue={this.state.ingredientValue}
-          inputValueName="ingredientValue"
-          handleInput={this.handleInput}
-        />
+            <ItemForm
+              itemText="Instructions"
+              onSubmit={this.addInstruction}
+              items={this.state.instructions}
+              inputValue={this.state.instructionValue}
+              inputValueName="instructionValue"
+              handleInput={this.handleInput}
+            />
 
-        <ItemForm
-          itemText="Instructions"
-          onSubmit={this.addInstruction}
-          items={this.state.instructions}
-          inputValue={this.state.instructionValue}
-          inputValueName="instructionValue"
-          handleInput={this.handleInput}
-        />
-
-        <ItemForm
-          itemText="Tags"
-          onSubmit={this.addTag}
-          items={this.state.tags}
-          inputValue={this.state.tagValue}
-          inputValueName="tagValue"
-          handleInput={this.handleInput}
-        />
+            <ItemForm
+              itemText="Tags"
+              onSubmit={this.addTag}
+              items={this.state.tags}
+              inputValue={this.state.tagValue}
+              inputValueName="tagValue"
+              handleInput={this.handleInput}
+            />
+          </Col>
+        </Row>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({ errorMessage: state.recipes.errorMessage });
 
 export default connect(
   mapStateToProps,
