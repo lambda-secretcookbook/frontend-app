@@ -8,7 +8,8 @@ export const authReducer = (state = initalState, action) => {
   switch (action.type) {
     case actions.LOGIN_REQUEST:
       return {
-        ...state
+        ...state,
+        errorMessage: ""
       };
 
     case actions.LOGIN_SUCCESS:
@@ -24,7 +25,8 @@ export const authReducer = (state = initalState, action) => {
 
     case actions.REGISTER_REQUEST:
       return {
-        ...state
+        ...state,
+        errorMessage: ""
       };
 
     case actions.REGISTER_SUCCESS:

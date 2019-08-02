@@ -21,7 +21,7 @@ export const authenticateUser = ({ username, password }) => dispatch => {
     .catch(error =>
       dispatch({
         type: LOGIN_FAILURE,
-        errorMessage: error.response.data.errorMessage
+        errorMessage: error.response.data.message
       })
     );
 };
@@ -46,7 +46,7 @@ export const registerUser = ({ username, password }) => dispatch => {
     .catch(error =>
       dispatch({
         type: REGISTER_FAILURE,
-        errorMessage: error.response.data.errorMessage
+        errorMessage: error.response.data.message
       })
     );
 };

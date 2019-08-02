@@ -11,7 +11,7 @@ const AuthForm = props => (
     )}
 
     <Form.Group>
-      <Form.Label for="username">Username</Form.Label>
+      <Form.Label htmlFor="username">Username</Form.Label>
       <Form.Control
         type="text"
         name="username"
@@ -22,7 +22,7 @@ const AuthForm = props => (
     </Form.Group>
 
     <Form.Group>
-      <Form.Label for="password">Password</Form.Label>
+      <Form.Label htmlFor="password">Password</Form.Label>
       <Form.Control
         type="password"
         name="password"
