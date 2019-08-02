@@ -24,7 +24,7 @@ class RecipeList extends Component {
     return (
       <div className="recipes">
         {this.props.recipes.map(recipe => (
-          <Card>
+          <Card key={recipe.id}>
             <Card.Body>
               <Card.Title>{recipe.title}</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">
