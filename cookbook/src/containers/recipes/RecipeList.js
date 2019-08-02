@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import { connect } from "react-redux";
 import { Card, Button } from "react-bootstrap";
 
@@ -31,11 +31,15 @@ class RecipeList extends Component {
                 {recipe.source}
               </Card.Subtitle>
               <Card.Text>{recipe.notes}</Card.Text>
-              <Card.Link href={`/recipe/${recipe.id}`}>View</Card.Link>
+              <LinkContainer to={`/recipe/${recipe.id}`}>
+                <Card.Link>View Recipe</Card.Link>
+              </LinkContainer>
             </Card.Body>
           </Card>
         ))}
-        <Button href="/recipes/new">Create New Recipe</Button>
+        <LinkContainer to="/recipes/new">
+          <Button size="lg">Create New Recipe</Button>
+        </LinkContainer>
       </div>
     );
   }
