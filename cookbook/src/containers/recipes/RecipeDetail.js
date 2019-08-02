@@ -3,9 +3,11 @@ import { connect } from "react-redux";
 import { Button, Spinner } from "react-bootstrap";
 
 import Error from "../../components/Error";
+import ItemDetail from "../../components/recipes/ItemDetail";
 import { getRecipe, deleteRecipe } from "../../actions";
 
 class RecipeDetail extends Component {
+  static defaultProps = {};
   componentDidMount() {
     this.props.getRecipe(this.props.id);
   }
@@ -40,11 +42,14 @@ class RecipeDetail extends Component {
             <strong>Notes:</strong> {this.props.recipe.notes}
           </span>
         </header>
-        <section className="ingredients">
-          {/* {this.props.recipe.ingredients.map(item => (
-            <div>{item}</div>
-          ))} */}
-        </section>
+        <ItemDetail
+          itemType="Ingredients"
+          items={this.props.recipe.ingredients}
+        />
+        <ItemDetail
+          itemType="Instructions"
+          items={this.props.recipe.instructions}
+        />
         <Button variant="danger" onClick={this.deleteRecipe}>
           Delete
         </Button>

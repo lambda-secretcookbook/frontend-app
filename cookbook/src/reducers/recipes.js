@@ -15,7 +15,16 @@ import {
 
 const initialState = {
   recipesList: [],
-  currentRecipe: [],
+  currentRecipe: {
+    id: undefined,
+    ingredients: [""],
+    instructions: [""],
+    notes: "",
+    source: "",
+    tags: [""],
+    title: "",
+    user_id: undefined
+  },
   isFetchingRecipes: false,
   isFetchingRecipe: false,
   errorMessage: ""
