@@ -11,23 +11,25 @@ const AuthForm = props => (
     )}
 
     <Form.Group>
-      <Form.Label htmlFor="username">Username</Form.Label>
       <Form.Control
         type="text"
         name="username"
+        placeholder="Username"
         value={props.usernameValue}
         onChange={props.handleChange}
+        autoComplete="on"
         required
       />
     </Form.Group>
 
     <Form.Group>
-      <Form.Label htmlFor="password">Password</Form.Label>
       <Form.Control
         type="password"
         name="password"
+        placeholder="Password"
         value={props.passwordValue}
         onChange={props.handleChange}
+        autoComplete="on"
         required
       />
     </Form.Group>

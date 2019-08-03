@@ -64,10 +64,10 @@ class RecipeCreate extends Component {
   render() {
     return (
       <div className="recipe create">
-        <h1>Add New Recipe</h1>
+        <h1 className="mb-3">Add New Recipe</h1>
         <Row>
           <Col>
-            <h1>Information</h1>
+            <h2>Information</h2>
             <RecipeForm
               createRecipe={this.createRecipe}
               titleValue={this.state.title}
@@ -78,8 +78,10 @@ class RecipeCreate extends Component {
             />
           </Col>
           <Col>
+            <h2>Details</h2>
             <ItemForm
               itemText="Ingredients"
+              helpText="The individual items that make up your recipe."
               onSubmit={this.addIngredient}
               items={this.state.ingredients}
               inputValue={this.state.ingredientValue}
@@ -89,6 +91,7 @@ class RecipeCreate extends Component {
 
             <ItemForm
               itemText="Instructions"
+              helpText="Give us step by step instructions on how you prepare the recipe."
               onSubmit={this.addInstruction}
               items={this.state.instructions}
               inputValue={this.state.instructionValue}
@@ -98,6 +101,7 @@ class RecipeCreate extends Component {
 
             <ItemForm
               itemText="Tags"
+              helpText="Tags are one word descriptors that help you sort your recipes."
               onSubmit={this.addTag}
               items={this.state.tags}
               inputValue={this.state.tagValue}

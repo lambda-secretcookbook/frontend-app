@@ -18,7 +18,7 @@ import RecipeCreate from "../containers/recipes/RecipeCreate";
 const App = () => (
   <div className="app">
     <Masthead />
-    <Container>
+    <Container className="mt-3">
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/account/login" component={Login} />
@@ -29,10 +29,6 @@ const App = () => (
         <PrivateRoute
           path="/recipe/:id/edit"
           render={() => <div>Edit Recipe</div>}
-        />
-        <PrivateRoute
-          path="/recipe/:id/delete"
-          render={() => <div>Delete Recipe</div>}
         />
         <Route component={NoMatch} />
       </Switch>

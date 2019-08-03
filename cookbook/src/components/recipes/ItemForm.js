@@ -2,23 +2,23 @@ import React from "react";
 import { Form, Button } from "react-bootstrap";
 
 const ItemForm = props => (
-  <Form onSubmit={props.onSubmit}>
+  <Form className="mb-3" onSubmit={props.onSubmit}>
     <Form.Group>
-      <h2>{props.itemText}</h2>
-      <ul className="items">
+      <Form.Control
+        type="text"
+        name={props.inputValueName}
+        value={props.inputValue}
+        placeholder={props.itemText}
+        onChange={props.handleInput}
+        required
+      />
+      <Form.Text className="text-muted">{props.helpText}</Form.Text>
+
+      <ul className="items mt-3">
         {props.items.map((item, index) => (
           <li key={index}>{item}</li>
         ))}
       </ul>
-
-      <Form.Control
-        type="text"
-        name={props.inputValueName}
-        placeholder={props.itemText}
-        required
-        value={props.inputValue}
-        onChange={props.handleInput}
-      />
     </Form.Group>
 
     <Button type="submit" variant="secondary">

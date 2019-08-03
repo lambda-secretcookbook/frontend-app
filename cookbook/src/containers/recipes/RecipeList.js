@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { connect } from "react-redux";
-import { Card, Button } from "react-bootstrap";
+import { CardDeck, Card, Button } from "react-bootstrap";
 
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
@@ -23,22 +23,28 @@ class RecipeList extends Component {
 
     return (
       <div className="recipes">
-        {this.props.recipes.map(recipe => (
-          <Card key={recipe.id}>
-            <Card.Body>
-              <Card.Title>{recipe.title}</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">
-                {recipe.source}
-              </Card.Subtitle>
-              <Card.Text>{recipe.notes}</Card.Text>
-              <LinkContainer to={`/recipe/${recipe.id}`}>
-                <Card.Link>View Recipe</Card.Link>
-              </LinkContainer>
-            </Card.Body>
-          </Card>
-        ))}
+        <CardDeck>
+          {this.props.recipes.map(recipe => (
+            <Card key={recipe.id} style={{ width: "240px" }}>
+              <Card.Body>
+                <Card.Title>{recipe.title}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">
+                  {recipe.source}
+                </Card.Subtitle>
+                <Card.Text>{recipe.notes}</Card.Text>
+                <LinkContainer to={`/recipe/${recipe.id}`}>
+                  <Button variant="dark" size="sm">
+                    View Recipe
+                  </Button>
+                </LinkContainer>
+              </Card.Body>
+            </Card>
+          ))}
+        </CardDeck>
         <LinkContainer to="/recipes/new">
-          <Button size="lg">Create New Recipe</Button>
+          <Button className="mt-3" size="lg">
+            Create New Recipe
+          </Button>
         </LinkContainer>
       </div>
     );

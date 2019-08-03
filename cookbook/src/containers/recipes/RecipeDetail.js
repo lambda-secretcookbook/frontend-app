@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Modal } from "react-bootstrap";
+import { Jumbotron, Button, Modal } from "react-bootstrap";
 
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
@@ -39,17 +39,20 @@ class RecipeDetail extends Component {
 
     return (
       <div className="recipe">
-        <header className="header">
+        <Jumbotron className="header">
           <h1>{this.props.recipe.title}</h1>
-          <span>
-            <strong>Source:</strong> {this.props.recipe.source} &nbsp;
-          </span>
-          <span>
-            <strong>Notes:</strong> {this.props.recipe.notes}
-          </span>
-        </header>
+          <div>
+            <strong>Source:</strong> {this.props.recipe.source}
+          </div>
+          {this.props.recipe.notes ? (
+            <div>{this.props.recipe.notes}</div>
+          ) : (
+            undefined
+          )}
+        </Jumbotron>
 
         <ItemDetail
+          className="mt-3"
           itemType="Ingredients"
           items={this.props.recipe.ingredients}
         />
